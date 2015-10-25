@@ -10,7 +10,14 @@ var getElementsByClassName = function(className){
   	if(current.classList !== undefined && current.classList.contains(className)) {
   		result.push(current);
   	}
+  	if(current.hasChildNodes()) {
+  		var children = current.childNodes;
+  		for(var i = 0; i < children.length; i++) {
+  			getElements(children[i]);
+  		};
+  	}
   }
+  getElements(document.body);
   return result; 
 };
 
